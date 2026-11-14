@@ -10,8 +10,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categorias = Category::withCount('products')->get();
-        return view('categories.index', compact('categorias'));
+        $categories = Category::with('products')->get();
+        return view('categories.index', compact('categories'));
     }
 
     public function show($id)
@@ -44,7 +44,7 @@ class CategoryController extends Controller
         ]);
 
         $categoria = new Category();
-        $categoria->name =$request->name;
+        $categoria->name = $request->name;
         $categoria->save();
 
         return redirect()->route('categories.index')->with('success', 'Categoria criada com sucesso!');
@@ -60,7 +60,7 @@ class CategoryController extends Controller
         return view('categories.edit', compact('categoria'));
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
             return redirect()->route('categories.index')->with('error', 'Acesso reservado a administradores.');
@@ -75,7 +75,7 @@ class CategoryController extends Controller
         ]);
 
         $categoria = Category::findOrFail($id);
-        $categoria->name =$request->name;
+        $categoria->name = $request->name;
         $categoria->save();
 
         return redirect()->route('categories.index')->with('success', 'Categoria atualizada com sucesso!');
@@ -87,7 +87,8 @@ class CategoryController extends Controller
             return redirect()->route('categories.index')->with('error', 'Acesso reservado a administradores.');
         }
 
-        $categoria = Category::findOrFail($id);$categoria->delete();
+        $categoria = Category::findOrFail($id);
+        $categoria->delete();
 
         return redirect()->route('categories.index')->with('success', 'Categoria eliminada com sucesso!');
     }
