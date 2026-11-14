@@ -2,54 +2,55 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class ProductSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('products')->insert([
-            [
-                'name' => 'Ração Seca Premium Salmão 3kg',
-                'description' => 'Alimento completo rico em ómega 3 para pelo brilhante.',
-                'price' => 24.90,
-                'image' => 'img/racao.jpg',
-                'category_id' => 1,
-                'owner_id' => 1, // <--- Adiciona esta linha em todos os produtos
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name' => 'Arranhador Torre em Sisal',
-                'description' => 'Torre arranhador resistente com brinquedos suspensos para gatos.',
-                'price' => 39.50,
-                'image' => 'img/arranhador.jpg',
-                'category_id' => 2,
-                'owner_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name' => 'Coleira Ajustável Refletora',
-                'description' => 'Coleira confortável com faixa refletora para passeios noturnos seguros.',
-                'price' => 11.99,
-                'image' => 'img/coleira.jpg',
-                'category_id' => 3,
-                'owner_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name' => 'Champô Suave Aveia 500ml',
-                'description' => 'Champô dermatológico com extrato de aveia para peles sensíveis.',
-                'price' => 9.50,
-                'image' => 'img/champu.jpg',
-                'category_id' => 4,
-                'owner_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ]);
+        $admin = User::where('email', 'admin@loja.pt')->first();
+        $alimentacao = Category::where('name', 'Alimentação')->first();
+        $brinquedos = Category::where('name', 'Brinquedos')->first();
+        $acessorios = Category::where('name', 'Acessórios')->first();
+        $higiene = Category::where('name', 'Higiene')->first();
+
+        $racao = new Product();
+        $racao->name = 'Ração Seca Premium Salmão 3kg';
+        $racao->description = 'Alimento completo rico em Ómega 3 para pelo brilhante.';
+        $racao->price = 24.90;
+        $racao->image = 'img/racao.jpg';
+        $racao->category_id = $alimentacao->id;
+        $racao->owner_id = $admin->id;
+        $racao->save();
+
+        $arranhador = new Product();
+        $arranhador->name = 'Arranhador Torre em Sisal';
+        $arranhador->description = 'Arranhador vertical com plataforma superior para descanso.';
+        $arranhador->price = 39.50;
+        $arranhador->image = 'img/arranhador.jpg';
+        $arranhador->category_id = $brinquedos->id;
+        $arranhador->owner_id = $admin->id;
+        $arranhador->save();
+
+        $coleira = new Product();
+        $coleira->name = 'Coleira Ajustável Refletora';
+        $coleira->description = 'Coleira resistente com fecho de segurança para passeios noturnos.';
+        $coleira->price = 11.99;
+        $coleira->image = 'img/coleira.jpg';
+        $coleira->category_id = $acessorios->id;
+        $coleira->owner_id = $admin->id;
+        $coleira->save();
+
+        $champo = new Product();
+        $champo->name = 'Champô Suave Aveia 500ml';
+        $champo->description = 'Fórmula hipoalergénica para pele sensível.';
+        $champo->price = 9.50;
+        $champo->image = 'img/champu.jpg';
+        $champo->category_id = $higiene->id;
+        $champo->owner_id = $admin->id;
+        $champo->save();
     }
 }
