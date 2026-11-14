@@ -17,14 +17,23 @@ class ProductController extends Controller
 
     public function indexByCategory($id, Request $request = null)
     {
+        $request = $request ?? request();
         $categorias = Category::all();
         $destaque = Product::inRandomOrder()->first();
-        $ordem = $request ? $request->query('ordem') : request()->query('ordem');
+        $ordem = $request->query('ordem');
+        $pesquisa = $request->query('pesquisa');
 
         $query = Product::with('category');
 
         if ($id != 0) {
             $query->where('category_id', $id);
+        }
+
+        if (!empty($pesquisa)) {
+            $query->where(function ($q) use ($pesquisa) {
+                $q->where('name', 'like', '%' . $pesquisa . '%')
+                  ->orWhere('description', 'like', '%' . $pesquisa . '%');
+            });
         }
 
         if ($ordem === 'asc') {
@@ -41,6 +50,7 @@ class ProductController extends Controller
             'idCategoriaAtiva' => $id,
             'destaque' => $destaque,
             'ordem' => $ordem,
+            'pesquisa' => $pesquisa,
         ]);
     }
 

@@ -17,6 +17,14 @@
         </div>
     @endisset
 
+    <form action="{{ route('products.index') }}" method="GET" style="display: flex; gap: 10px; margin-bottom: 15px;">
+        <input type="text" name="pesquisa" value="{{ $pesquisa ?? '' }}" placeholder="Pesquisar produto por nome ou descrição..." style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 6px;">
+        <button type="submit" class="button" style="padding: 10px 18px; cursor: pointer;">Pesquisar</button>
+        @if(!empty($pesquisa))
+            <a href="{{ route('products.index') }}" class="button" style="padding: 10px 15px; background: #64748b; color: white;">Limpar</a>
+        @endif
+    </form>
+
     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 20px; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
         <div>
             <strong>Filtrar por Categoria:</strong>
@@ -30,10 +38,10 @@
 
         <div>
             <strong>Ordenar por Preço:</strong>
-            <a href="{{ route('products.index', ['ordem' => 'asc']) }}" class="button" style="padding: 5px 10px; font-size: 0.9rem;">
+            <a href="{{ route('products.index', ['ordem' => 'asc', 'pesquisa' => $pesquisa ?? null]) }}" class="button" style="padding: 5px 10px; font-size: 0.9rem;">
                 Preço ↑ (Menor)
             </a>
-            <a href="{{ route('products.index', ['ordem' => 'desc']) }}" class="button" style="padding: 5px 10px; font-size: 0.9rem;">
+            <a href="{{ route('products.index', ['ordem' => 'desc', 'pesquisa' => $pesquisa ?? null]) }}" class="button" style="padding: 5px 10px; font-size: 0.9rem;">
                 Preço ↓ (Maior)
             </a>
         </div>
@@ -55,51 +63,55 @@
         </div>
     @endif
 
-    <table class="tabela-loja" style="width: 100%; border-collapse: collapse;">
-        <thead>
-            <tr style="background: #112222; color: white; text-align: left;">
-                <th style="padding: 10px;">IMAGEM</th>
-                <th style="padding: 10px;">NOME</th>
-                <th style="padding: 10px;">CATEGORIA</th>
-                <th style="padding: 10px;">PREÇO</th>
-                <th style="padding: 10px; text-align: right;">AÇÕES</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($products as $product)
-            <tr style="border-bottom: 1px solid #ddd;">
-                <td style="padding: 10px;">
-                    @if($product->image)
-                        <img src="{{ Str::startsWith($product->image, 'http') ? $product->image : asset($product->image) }}" alt="{{ $product->name }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;">
-                    @else
-                        <img src="{{ asset('img/sem-foto.jpg') }}" alt="Sem foto" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;">
-                    @endif
-                </td>
-                <td style="padding: 10px;">
-                    <a href="{{ route('products.show', $product->id) }}" style="font-weight: bold; color: #0f766e;">
-                        {{ $product->name }}
-                    </a>
-                </td>
-                <td style="padding: 10px;">
-                    @if($product->category)
-                        <a href="{{ route('categories.show', $product->category->id) }}">{{ $product->category->name }}</a>
-                    @endif
-                </td>
-                <td style="padding: 10px;">{{ number_format($product->price, 2, ',', '.') }} €</td>
-                <td style="padding: 10px; text-align: right;">
-                    <a href="{{ route('products.show', $product->id) }}" style="margin-right: 10px;">Detalhes</a>
-                    @if(Auth::check() && Auth::user()->is_admin)
-                        <a href="{{ route('products.edit', $product->id) }}" style="margin-right: 10px;">Editar</a>
-                        <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Tens a certeza que queres eliminar?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" style="background:none; border:none; color:red; cursor:pointer;">Eliminar</button>
-                        </form>
-                    @endif
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    @if($products->isEmpty())
+        <p style="padding: 20px; background: #f8fafc; border-radius: 8px; text-align: center;">Nenhum produto encontrado para a pesquisa efetuada.</p>
+    @else
+        <table class="tabela-loja" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background: #112222; color: white; text-align: left;">
+                    <th style="padding: 10px;">IMAGEM</th>
+                    <th style="padding: 10px;">NOME</th>
+                    <th style="padding: 10px;">CATEGORIA</th>
+                    <th style="padding: 10px;">PREÇO</th>
+                    <th style="padding: 10px; text-align: right;">AÇÕES</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($products as $product)
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px;">
+                        @if($product->image)
+                            <img src="{{ Str::startsWith($product->image, 'http') ? $product->image : asset($product->image) }}" alt="{{ $product->name }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;">
+                        @else
+                            <img src="{{ asset('img/sem-foto.jpg') }}" alt="Sem foto" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;">
+                        @endif
+                    </td>
+                    <td style="padding: 10px;">
+                        <a href="{{ route('products.show', $product->id) }}" style="font-weight: bold; color: #0f766e;">
+                            {{ $product->name }}
+                        </a>
+                    </td>
+                    <td style="padding: 10px;">
+                        @if($product->category)
+                            <a href="{{ route('categories.show', $product->category->id) }}">{{ $product->category->name }}</a>
+                        @endif
+                    </td>
+                    <td style="padding: 10px;">{{ number_format($product->price, 2, ',', '.') }} €</td>
+                    <td style="padding: 10px; text-align: right;">
+                        <a href="{{ route('products.show', $product->id) }}" style="margin-right: 10px;">Detalhes</a>
+                        @if(Auth::check() && Auth::user()->is_admin)
+                            <a href="{{ route('products.edit', $product->id) }}" style="margin-right: 10px;">Editar</a>
+                            <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Tens a certeza que queres eliminar?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" style="background:none; border:none; color:red; cursor:pointer;">Eliminar</button>
+                            </form>
+                        @endif
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @endif
 </div>
 @endsection
