@@ -26,7 +26,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: linear-gradient(rgba(250, 248, 245, 0.28), rgba(250, 248, 245, 0.35)),
+    background: linear-gradient(rgba(250, 248, 245, 0.30), rgba(250, 248, 245, 0.38)),
                 url('/img/loja.jpg') center/cover fixed no-repeat !important;
     color: var(--cor-texto);
     font-family: 'Figtree', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -97,65 +97,58 @@ body {
     border-bottom: 1px solid var(--cor-borda);
 }
 
-/* Hero posicionado à esquerda para deixar o cão, gato e coelho totalmente visíveis */
+/* Caixa da página inicial posicionada mais abaixo e perfeitamente legível */
+.hero-inicio,
 .hero-banner {
-    background: rgba(255, 255, 255, 0.85) !important;
+    background: rgba(255, 255, 255, 0.90) !important;
     backdrop-filter: blur(6px);
-    max-width: 480px;
-    margin: 3rem 0 3rem 5%;
-    padding: 2.25rem 2rem;
+    max-width: 720px;
+    margin: 22vh auto 2rem auto;
+    padding: 2.5rem 2rem;
     border-radius: var(--raio-borda);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
     border: 1px solid rgba(255, 255, 255, 0.95);
-    text-align: left;
+    text-align: center;
 }
 
+.hero-inicio h1,
 .hero-banner h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 800;
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 0.85rem 0;
     color: #111827 !important;
-    line-height: 1.2;
 }
 
+.hero-inicio p,
 .hero-banner p {
-    font-size: 1.05rem;
-    margin: 0 0 1.5rem 0;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 1.75rem auto;
     color: #1f2937 !important;
-    font-weight: 600;
+    font-weight: 600 !important;
 }
 
-.hero-banner a {
-    display: inline-block;
-    background-color: var(--cor-primaria) !important;
-    color: #ffffff !important;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 700;
-    text-decoration: none !important;
-    transition: background-color 0.2s ease;
-}
-
-.hero-banner a:hover {
-    background-color: var(--cor-primaria-hover) !important;
-}
-
-/* Contentor transparente para deixar ver a imagem de fundo à volta dos elementos */
+/* Contentor das restantes páginas (Catálogo, Categorias, Encomendas, etc.) */
 .container-loja {
     max-width: 1200px;
-    margin: 1rem auto;
+    margin: 1.5rem auto;
     padding: 1.5rem;
     background-color: transparent !important;
 }
 
 .container-loja > h1 {
     display: inline-block;
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: rgba(255, 255, 255, 0.94);
     padding: 0.5rem 1.25rem;
     border-radius: 10px;
-    color: #111827;
+    color: #111827 !important;
     margin-top: 0;
     box-shadow: var(--sombra-suave);
+}
+
+.container-loja > p {
+    color: #1f2937 !important;
+    font-weight: 600;
 }
 
 .filtros-categorias {
@@ -272,29 +265,29 @@ body {
 
 .btn-loja {
     display: inline-block;
-    background-color: var(--cor-primaria);
+    background-color: var(--cor-primaria) !important;
     color: #ffffff !important;
-    padding: 0.55rem 1.1rem;
+    padding: 0.65rem 1.3rem;
     border-radius: 8px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    text-decoration: none;
+    text-decoration: none !important;
     border: none;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
 .btn-loja:hover {
-    background-color: var(--cor-primaria-hover);
+    background-color: var(--cor-primaria-hover) !important;
 }
 
 .btn-destaque {
-    background-color: var(--cor-secundaria);
+    background-color: var(--cor-secundaria) !important;
     color: #1f2937 !important;
 }
 
 .btn-destaque:hover {
-    background-color: #d97706;
+    background-color: #d97706 !important;
 }
 
 .app-wrapper .bg-blue-600 {
@@ -409,7 +402,7 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: rgba(255, 255, 255, 0.94);
     padding: 1rem 1.25rem;
     border-radius: var(--raio-borda);
     box-shadow: var(--sombra-suave);
@@ -536,7 +529,7 @@ body {
     width: 100%;
     border-collapse: collapse;
     min-width: 600px;
-    background-color: rgba(255, 255, 255, 0.94);
+    background-color: rgba(255, 255, 255, 0.95);
     border-radius: var(--raio-borda);
     overflow: hidden;
     box-shadow: var(--sombra-suave);
@@ -598,12 +591,13 @@ body {
         align-items: flex-start;
     }
 
+    .hero-inicio,
     .hero-banner {
-        margin: 1.5rem 1rem;
+        margin: 10vh 1rem 2rem 1rem;
         padding: 2rem 1.25rem;
-        max-width: none;
     }
 
+    .hero-inicio h1,
     .hero-banner h1 {
         font-size: 1.65rem;
     }
