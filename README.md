@@ -43,8 +43,8 @@ Para facilitar a avaliação e teste das diferentes permissões da aplicação, 
 
 | Perfil / Papel | Email | Password | Permissões e Acessos |
 | :--- | :--- | :--- | :--- |
-| **Administrador** | `admin@lojaanimais.pt` | `password123` | Acesso ao painel de administração, criação/edição/eliminação de produtos e categorias. |
-| **Cliente** | `cliente@lojaanimais.pt` | `password123` | Acesso à compra de produtos, histórico de encomendas e gestão de animais de estimação. |
+| **Administrador** | `admin@loja.pt` | `password123` | Acesso ao painel de administração, criação/edição/eliminação de produtos e categorias. |
+| **Cliente** | `cliente@loja.pt` | `password123` | Acesso à compra de produtos, histórico de encomendas e gestão de animais de estimação. |
 
 ---
 
