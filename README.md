@@ -3,7 +3,7 @@
 Aplicação web desenvolvida no âmbito da unidade curricular de **Aplicações Centradas em Redes** do **CTeSP em Tecnologias e Programação de Sistemas de Informação (TPSI)** da **Universidade da Madeira (UMa)**.
 
 ## 🚀 Sobre o Projeto
-A **Loja de Animais** é uma plataforma de e-commerce e gestão de animais de estimação que implementa o modelo **MVC (Model-View-Controller)** utilizando a framework **Laravel 11**. A aplicação conta com áreas distintas para visitantes, clientes registados e administradores, oferecendo um catálogo completo com pesquisa, ordenação, destaques aleatórios e gestão de encomendas.
+A **Loja de Animais** é uma plataforma de e-commerce e gestão de animais de estimação que implementa o modelo **MVC (Model-View-Controller)** utilizando a framework **Laravel 11**. A aplicação conta com áreas distintas para visitantes, clientes registados e administradores, oferecendo um catálogo completo com pesquisa, ordenação, destaques aleatórios e gestão de encomendas e animais.
 
 ---
 
@@ -43,15 +43,17 @@ Para facilitar a avaliação e teste das diferentes permissões da aplicação, 
 
 | Perfil / Papel | Email | Password | Permissões e Acessos |
 | :--- | :--- | :--- | :--- |
-| **Administrador** | `admin@lojaanimais.pt` *(ou o teu email de admin)* | `password123` *(ou a tua password)* | Acesso ao painel de administração, criação/edição/eliminação de produtos e categorias. |
-| **Cliente** | `cliente@lojaanimais.pt` *(ou o teu email de cliente)* | `password123` *(ou a tua password)* | Acesso à compra de produtos, histórico de encomendas e gestão de animais de estimação. |
+| **Administrador** | `admin@lojaanimais.pt` | `password123` | Acesso ao painel de administração, criação/edição/eliminação de produtos e categorias. |
+| **Cliente** | `cliente@lojaanimais.pt` | `password123` | Acesso à compra de produtos, histórico de encomendas e gestão de animais de estimação. |
 
 ---
 
 ## 📂 Estrutura de Relações (Base de Dados)
-O projeto implementa relações **1 para Muitos (1:N)**, nomeadamente:
-* **1 Categoria** possui **Muitos Produtos**.
-* **1 Utilizador** possui **Muitos Animais / Encomendas**.
+O projeto implementa várias relações do tipo **1 para Muitos (1:N)** com base no modelo conceptual:
+1. **`users` (1) ➔ `pets` (N):** Um utilizador pode possuir vários animais de registados.
+2. **`users` (1) ➔ `orders` (N):** Um utilizador pode efetuar várias encomendas ao longo do tempo.
+3. **`categories` (1) ➔ `products` (N):** Uma categoria agrupa vários produtos do catálogo.
+4. **`products` (1) ➔ `orders` (N):** Um produto pode estar presente em várias linhas de encomendas diferentes.
 
 ---
 
