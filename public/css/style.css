@@ -26,7 +26,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: linear-gradient(rgba(250, 248, 245, 0.35), rgba(250, 248, 245, 0.45)),
+    background: linear-gradient(rgba(250, 248, 245, 0.28), rgba(250, 248, 245, 0.35)),
                 url('/img/loja.jpg') center/cover fixed no-repeat !important;
     color: var(--cor-texto);
     font-family: 'Figtree', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -44,7 +44,7 @@ body {
 }
 
 .navbar-loja {
-    background-color: rgba(255, 255, 255, 0.96);
+    background-color: rgba(255, 255, 255, 0.94);
     border-bottom: 2px solid var(--cor-borda);
     position: sticky;
     top: 0;
@@ -97,31 +97,32 @@ body {
     border-bottom: 1px solid var(--cor-borda);
 }
 
+/* Hero posicionado à esquerda para deixar o cão, gato e coelho totalmente visíveis */
 .hero-banner {
-    background: rgba(255, 255, 255, 0.88) !important;
-    backdrop-filter: blur(4px);
-    max-width: 760px;
-    margin: 4rem auto;
-    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(6px);
+    max-width: 480px;
+    margin: 3rem 0 3rem 5%;
+    padding: 2.25rem 2rem;
     border-radius: var(--raio-borda);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    text-align: left;
 }
 
 .hero-banner h1 {
-    font-size: 2.25rem;
+    font-size: 2rem;
     font-weight: 800;
     margin: 0 0 0.75rem 0;
     color: #111827 !important;
+    line-height: 1.2;
 }
 
 .hero-banner p {
-    font-size: 1.1rem;
-    max-width: 650px;
-    margin: 0 auto 1.75rem auto;
+    font-size: 1.05rem;
+    margin: 0 0 1.5rem 0;
     color: #1f2937 !important;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .hero-banner a {
@@ -139,12 +140,21 @@ body {
     background-color: var(--cor-primaria-hover) !important;
 }
 
+/* Contentor transparente para deixar ver a imagem de fundo à volta dos elementos */
 .container-loja {
     max-width: 1200px;
-    margin: 1.5rem auto;
-    padding: 2rem 1.5rem;
+    margin: 1rem auto;
+    padding: 1.5rem;
+    background-color: transparent !important;
+}
+
+.container-loja > h1 {
+    display: inline-block;
     background-color: rgba(255, 255, 255, 0.92);
-    border-radius: var(--raio-borda);
+    padding: 0.5rem 1.25rem;
+    border-radius: 10px;
+    color: #111827;
+    margin-top: 0;
     box-shadow: var(--sombra-suave);
 }
 
@@ -186,7 +196,7 @@ body {
 }
 
 .cartao-produto {
-    background-color: var(--cor-cartao);
+    background-color: rgba(255, 255, 255, 0.95);
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-borda);
     overflow: hidden;
@@ -347,9 +357,9 @@ body {
 .footer-loja {
     flex-shrink: 0;
     margin-top: auto;
-    background-color: rgba(255, 255, 255, 0.96);
+    background-color: rgba(255, 255, 255, 0.94);
     border-top: 1px solid var(--cor-borda);
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem;
     text-align: center;
     font-size: 0.9rem;
     color: var(--cor-texto);
@@ -365,7 +375,7 @@ body {
 }
 
 .guest-card {
-    background-color: var(--cor-cartao);
+    background-color: rgba(255, 255, 255, 0.95);
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-borda) !important;
     box-shadow: var(--sombra-suave) !important;
@@ -399,6 +409,10 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.92);
+    padding: 1rem 1.25rem;
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-suave);
 }
 
 .cabecalho-seccao h1 {
@@ -407,7 +421,7 @@ body {
 }
 
 .form-box {
-    background-color: var(--cor-cartao);
+    background-color: rgba(255, 255, 255, 0.95);
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-borda);
     padding: 2rem;
@@ -511,7 +525,7 @@ body {
 }
 
 .tabela-contentor {
-    background-color: var(--cor-cartao);
+    background-color: rgba(255, 255, 255, 0.95);
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-borda);
     box-shadow: var(--sombra-suave);
@@ -522,7 +536,10 @@ body {
     width: 100%;
     border-collapse: collapse;
     min-width: 600px;
-    background-color: var(--cor-cartao);
+    background-color: rgba(255, 255, 255, 0.94);
+    border-radius: var(--raio-borda);
+    overflow: hidden;
+    box-shadow: var(--sombra-suave);
 }
 
 .tabela-loja thead th {
@@ -583,7 +600,8 @@ body {
 
     .hero-banner {
         margin: 1.5rem 1rem;
-        padding: 2.25rem 1.25rem;
+        padding: 2rem 1.25rem;
+        max-width: none;
     }
 
     .hero-banner h1 {
