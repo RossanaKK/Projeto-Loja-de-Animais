@@ -16,18 +16,14 @@
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
+body {
     margin: 0;
     padding: 0;
-}
-
-body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background: linear-gradient(rgba(250, 248, 245, 0.30), rgba(250, 248, 245, 0.35)),
-                url('/img/loja.jpg') center 82%/cover fixed no-repeat !important;
+                url('/img/loja.jpg') center/cover fixed no-repeat !important;
     color: var(--cor-texto);
     font-family: 'Figtree', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
@@ -97,7 +93,7 @@ body {
     border-bottom: 1px solid var(--cor-borda);
 }
 
-/* Bloco inicial centrado, grande, transparente e sem tapar os animais */
+/* Bloco inicial centrado, grande, transparente e legível */
 .hero-inicio,
 .hero-banner {
     background: transparent !important;
@@ -105,35 +101,35 @@ body {
     box-shadow: none !important;
     border: none !important;
     max-width: 850px;
-    margin: 2rem auto 0 auto;
-    padding: 1.5rem 2rem;
+    margin: 1.25rem auto 0 auto;
+    padding: 1rem 2rem;
     text-align: center;
 }
 
 .hero-inicio h1,
 .hero-banner h1 {
-    font-size: 2.75rem;
+    font-size: 2.6rem;
     font-weight: 800;
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 0.6rem 0;
     color: #111827 !important;
     line-height: 1.15;
-    text-shadow: 0 2px 12px rgba(255, 255, 255, 0.95), 0 0 24px rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 14px rgba(255, 255, 255, 0.98), 0 0 25px rgba(255, 255, 255, 0.95);
 }
 
 .hero-inicio p,
 .hero-banner p {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     max-width: 680px;
-    margin: 0 auto 1.5rem auto;
+    margin: 0 auto 1.25rem auto;
     color: #111827 !important;
     font-weight: 700 !important;
-    text-shadow: 0 1px 10px rgba(255, 255, 255, 0.98), 0 0 18px rgba(255, 255, 255, 0.95);
+    text-shadow: 0 1px 12px rgba(255, 255, 255, 0.98), 0 0 20px rgba(255, 255, 255, 0.95);
 }
 
 .hero-inicio .btn-loja,
 .hero-banner .btn-loja {
     font-size: 1.05rem;
-    padding: 0.8rem 1.75rem;
+    padding: 0.75rem 1.65rem;
     box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
 }
 
