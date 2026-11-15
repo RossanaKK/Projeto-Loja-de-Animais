@@ -10,6 +10,24 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+    private function getCloudinaryInstance(): Cloudinary
+    {
+        if (env('CLOUDINARY_URL')) {
+            return new Cloudinary(env('CLOUDINARY_URL'));
+        }
+
+        return new Cloudinary([
+            'cloud' => [
+                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+                'api_key'    => env('CLOUDINARY_API_KEY'),
+                'api_secret' => env('CLOUDINARY_API_SECRET'),
+            ],
+            'url' => [
+                'secure' => true,
+            ],
+        ]);
+    }
+
     public function index(Request $request)
     {
         return $this->indexByCategory(0, $request);
@@ -107,7 +125,7 @@ class ProductController extends Controller
         $imageUrl = $request->image;
 
         if ($request->hasFile('image_file')) {
-            $cloudinary = new Cloudinary(env('CLOUDINARY_URL'));
+            $cloudinary = $this->getCloudinaryInstance();
             $resultado = $cloudinary->uploadApi()->upload($request->file('image_file')->getRealPath(), [
                 'upload_preset' => 'lojaanimais_preset',
             ]);
@@ -175,7 +193,7 @@ class ProductController extends Controller
         $produto->category_id = $request->category_id;
 
         if ($request->hasFile('image_file')) {
-            $cloudinary = new Cloudinary(env('CLOUDINARY_URL'));
+            $cloudinary = $this->getCloudinaryInstance();
             $resultado = $cloudinary->uploadApi()->upload($request->file('image_file')->getRealPath(), [
                 'upload_preset' => 'lojaanimais_preset',
             ]);
