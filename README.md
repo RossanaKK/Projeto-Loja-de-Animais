@@ -1,58 +1,65 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🐾 Loja de Animais — Projeto Final (Laravel)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplicação web desenvolvida no âmbito da unidade curricular de **Aplicações Centradas em Redes** do **CTeSP em Tecnologias e Programação de Sistemas de Informação (TPSI)** da **Universidade da Madeira (UMa)**.
 
-## About Laravel
+## 🚀 Sobre o Projeto
+A **Loja de Animais** é uma plataforma de e-commerce e gestão de animais de estimação que implementa o modelo **MVC (Model-View-Controller)** utilizando a framework **Laravel 11**. A aplicação conta com áreas distintas para visitantes, clientes registados e administradores, oferecendo um catálogo completo com pesquisa, ordenação, destaques aleatórios e gestão de encomendas.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Tecnologias e Ferramentas Utilizadas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **Backend:** PHP 8.2+, Laravel 11
+* **Base de Dados:** MySQL (alojada em **Aiven.io**)
+* **Armazenamento de Imagens:** **Cloudinary** (API para upload e otimização de imagens)
+* **Autenticação:** Laravel Breeze (Gestão de Sessões, Registo e Login)
+* **Frontend:** Blade Templates, CSS3 personalizado com design responsivo e efeitos translúcidos (*backdrop-filter*)
+* **Deploy e Controlo de Versões:** Git, GitHub e **Render**
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ✨ Funcionalidades Principais
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🌐 Área Pública (Guest)
+* **Página Inicial Dinâmica:** Apresenta um sistema de destaques aleatórios de produtos a cada *refresh*.
+* **Catálogo e Detalhes:** Listagem completa de produtos com imagens em alta resolução e visualização detalhada.
+* **Pesquisa e Ordenação:** Permite filtrar produtos por categoria e ordenar de forma ascendente/descendente.
+* **Página de Contactos:** Informações institucionais e canal de comunicação direto.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### 👤 Área Reservada (Clientes Autenticados)
+* **Autenticação Segura:** Registo e início de sessão através do Laravel Breeze.
+* **Gestão de Animais de Estimação:** Secção dedicada onde os clientes podem registar e gerir o perfil dos seus animais (*Os Meus Animais*).
+* **Histórico de Encomendas:** Acompanhamento e registo de compras efetuadas.
 
-## Agentic Development
+### 🛠️ Painel de Administração (Admin)
+* **Gestão CRUD Completa:** Criação, leitura, atualização e eliminação de **Produtos** e **Categorias**.
+* **Validação de Dados:** Validação robusta de campos obrigatórios, comprimentos mínimos e restrições de formato/tamanho para uploads de imagens, com mensagens de erro personalizadas.
+* **Controlo de Acessos:** Restrições rígidas baseadas em papéis (*Guest*, *Auth*, *Admin*).
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
-```bash
-composer require laravel/boost --dev
+## 🔑 Credenciais de Teste
+Para facilitar a avaliação e teste das diferentes permissões da aplicação, podes utilizar as seguintes contas configuradas:
 
-php artisan boost:install
-```
+| Perfil / Papel | Email | Password | Permissões e Acessos |
+| :--- | :--- | :--- | :--- |
+| **Administrador** | `admin@lojaanimais.pt` *(ou o teu email de admin)* | `password` *(ou a tua password)* | Acesso ao painel de administração, criação/edição/eliminação de produtos e categorias. |
+| **Cliente** | `cliente@lojaanimais.pt` *(ou o teu email de cliente)* | `password` *(ou a tua password)* | Acesso à compra de produtos, histórico de encomendas e gestão de animais de estimação. |
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## 📂 Estrutura de Relações (Base de Dados)
+O projeto implementa relações **1 para Muitos (1:N)**, nomeadamente:
+* **1 Categoria** possui **Muitos Produtos**.
+* **1 Utilizador** possui **Muitos Animais / Encomendas**.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## ⚙️ Instalação e Execução Local
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Se pretenderes executar o projeto localmente no teu ambiente de desenvolvimento (ex: **Laragon**):
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. **Clonar o repositório:**
+   ```bash
+   git clone [https://github.com/RossanaKK/Projeto-Loja-de-Animais.git](https://github.com/RossanaKK/Projeto-Loja-de-Animais.git)
+   cd Projeto-Loja-de-Animais
