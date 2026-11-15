@@ -149,16 +149,16 @@ body {
     max-width: 1200px;
     margin: 1.5rem auto;
     padding: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.50);
+    background-color: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(8px);
     border-radius: var(--raio-borda);
     box-shadow: var(--sombra-suave);
-    border: 1px solid rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .container-loja > h1 {
     display: inline-block;
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(4px);
     padding: 0.5rem 1.25rem;
     border-radius: 10px;
@@ -167,9 +167,19 @@ body {
     box-shadow: var(--sombra-suave);
 }
 
-.container-loja > p {
+/* Correção para o texto de avisos/encomendas não ficar escuro sobre fundo escuro */
+.container-loja .bg-white,
+.container-loja [class*="bg-gray-"],
+.container-loja [class*="bg-slate-"] {
+    background-color: rgba(255, 255, 255, 0.85) !important;
     color: #1f2937 !important;
-    font-weight: 600;
+    border: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+.container-loja p,
+.container-loja span,
+.container-loja div {
+    color: #1f2937;
 }
 
 .filtros-categorias {
@@ -211,9 +221,9 @@ body {
 }
 
 .cartao-produto {
-    background-color: rgba(255, 255, 255, 0.70);
+    background-color: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.85);
     border-radius: var(--raio-borda);
     overflow: hidden;
     display: flex;
@@ -326,7 +336,7 @@ body {
 }
 
 .app-wrapper .bg-white.overflow-hidden {
-    background-color: rgba(255, 255, 255, 0.65) !important;
+    background-color: rgba(255, 255, 255, 0.75) !important;
     backdrop-filter: blur(6px);
     overflow-x: auto !important;
     border-radius: var(--raio-borda);
@@ -341,7 +351,7 @@ body {
 }
 
 .app-wrapper thead th {
-    background-color: rgba(240, 253, 250, 0.75);
+    background-color: rgba(240, 253, 250, 0.85);
     color: var(--cor-primaria);
     text-align: left;
     padding: 0.9rem 1rem;
@@ -410,9 +420,9 @@ body {
 }
 
 .guest-card {
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.85);
     border-radius: var(--raio-borda) !important;
     box-shadow: var(--sombra-suave) !important;
 }
@@ -445,12 +455,12 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(6px);
     padding: 1rem 1.25rem;
     border-radius: var(--raio-borda);
     box-shadow: var(--sombra-suave);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.85);
 }
 
 .cabecalho-seccao h1 {
@@ -459,9 +469,9 @@ body {
 }
 
 .form-box {
-    background-color: rgba(255, 255, 255, 0.70);
+    background-color: rgba(255, 255, 255, 0.80);
     backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.85);
     border-radius: var(--raio-borda);
     padding: 2rem;
     box-shadow: var(--sombra-suave);
@@ -564,9 +574,9 @@ body {
 }
 
 .tabela-contentor {
-    background-color: rgba(255, 255, 255, 0.70);
+    background-color: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.85);
     border-radius: var(--raio-borda);
     box-shadow: var(--sombra-suave);
     overflow-x: auto;
@@ -580,7 +590,7 @@ body {
 }
 
 .tabela-loja thead th {
-    background-color: rgba(240, 253, 250, 0.75);
+    background-color: rgba(240, 253, 250, 0.85);
     color: var(--cor-primaria);
     text-align: left;
     padding: 0.9rem 1rem;
