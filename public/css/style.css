@@ -5,7 +5,7 @@
     --cor-fundo: #faf8f5;
     --cor-cartao: #ffffff;
     --cor-texto: #1f2937;
-    --cor-texto-suave: #6b7280;
+    --cor-texto-suave: #4b5563;
     --cor-borda: #e5e7eb;
     --cor-perigo: #dc2626;
     --sombra-suave: 0 4px 12px rgba(15, 118, 110, 0.08);
@@ -17,12 +17,20 @@
 }
 
 body {
-    background-color: var(--cor-fundo);
+    background: linear-gradient(rgba(250, 248, 245, 0.65), rgba(250, 248, 245, 0.75)),
+                url('/img/loja.jpg') center/cover fixed no-repeat !important;
     color: var(--cor-texto);
     font-family: 'Figtree', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    min-height: 100vh;
+}
+
+.app-wrapper,
+.min-h-screen,
+.bg-gray-100 {
+    background-color: transparent !important;
 }
 
 .navbar-loja {
@@ -74,19 +82,14 @@ body {
     color: var(--cor-primaria);
 }
 
-.app-wrapper {
-    background-color: var(--cor-fundo);
-}
-
 .page-header {
     background-color: var(--cor-cartao);
     border-bottom: 1px solid var(--cor-borda);
 }
 
 .hero-banner {
-    background: linear-gradient(rgba(15, 118, 110, 0.40), rgba(17, 94, 89, 0.45)),
-                url('../img/loja.jpg') center/cover no-repeat;
-    color: #ffffff;
+    background: transparent;
+    color: var(--cor-texto);
     padding: 4.5rem 1.5rem;
     text-align: center;
 }
@@ -95,13 +98,15 @@ body {
     font-size: 2.25rem;
     font-weight: 800;
     margin: 0 0 0.75rem 0;
+    color: var(--cor-texto);
 }
 
 .hero-banner p {
     font-size: 1.1rem;
     max-width: 650px;
-    margin: 0 auto;
-    color: #f0fdfa;
+    margin: 0 auto 1.5rem auto;
+    color: var(--cor-texto);
+    font-weight: 500;
 }
 
 .container-loja {
@@ -307,7 +312,7 @@ body {
 }
 
 .footer-loja {
-    background-color: var(--cor-cartao);
+    background-color: rgba(255, 255, 255, 0.92);
     border-top: 1px solid var(--cor-borda);
     padding: 1.75rem 1.5rem;
     text-align: center;
@@ -317,7 +322,7 @@ body {
 }
 
 .guest-wrapper {
-    background-color: var(--cor-fundo);
+    background-color: transparent !important;
     padding: 1.5rem;
 }
 
@@ -402,154 +407,4 @@ body {
     border-color: var(--cor-primaria);
     outline: none;
     box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
-}
-
-.form-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
-}
-
-.form-buttons a {
-    text-decoration: none;
-}
-
-.button {
-    background-color: var(--cor-primaria);
-    color: #ffffff;
-    padding: 0.6rem 1.3rem;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    user-select: none;
-    transition: background-color 0.2s ease;
-    text-align: center;
-}
-
-.button:hover {
-    background-color: var(--cor-primaria-hover);
-}
-
-.button-voltar {
-    background-color: #e5e7eb;
-    color: var(--cor-texto);
-}
-
-.button-voltar:hover {
-    background-color: #d1d5db;
-}
-
-.erros-box {
-    margin-top: 1.25rem;
-    padding: 1rem;
-    background-color: #fee2e2;
-    border: 1px solid #fca5a5;
-    border-radius: 8px;
-    color: var(--cor-perigo);
-    font-size: 0.9rem;
-}
-
-.erros-box p {
-    margin: 0.25rem 0;
-}
-
-.alerta-sucesso {
-    background-color: #d1fae5;
-    color: #065f46;
-    border: 1px solid #6ee7b7;
-    padding: 0.9rem 1.2rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-}
-
-.tabela-contentor {
-    background-color: var(--cor-cartao);
-    border: 1px solid var(--cor-borda);
-    border-radius: var(--raio-borda);
-    box-shadow: var(--sombra-suave);
-    overflow-x: auto;
-}
-
-.tabela-loja {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 600px;
-}
-
-.tabela-loja thead th {
-    background-color: #f0fdfa;
-    color: var(--cor-primaria);
-    text-align: left;
-    padding: 0.9rem 1rem;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    border-bottom: 2px solid var(--cor-borda);
-}
-
-.tabela-loja tbody td {
-    padding: 0.9rem 1rem;
-    border-bottom: 1px solid var(--cor-borda);
-}
-
-.tabela-loja tbody tr:hover {
-    background-color: #f9fafb;
-}
-
-.link-editar {
-    color: var(--cor-primaria);
-    font-weight: 600;
-    text-decoration: none;
-    margin-right: 0.75rem;
-}
-
-.link-editar:hover {
-    text-decoration: underline;
-}
-
-.link-eliminar {
-    background: none;
-    border: none;
-    color: var(--cor-perigo);
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    padding: 0;
-}
-
-.link-eliminar:hover {
-    text-decoration: underline;
-}
-
-@media (max-width: 1024px) {
-    .grelha-produtos {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 640px) {
-    .navbar-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .hero-banner {
-        padding: 2.25rem 1rem;
-    }
-
-    .hero-banner h1 {
-        font-size: 1.65rem;
-    }
-
-    .grelha-produtos {
-        grid-template-columns: 1fr;
-    }
-
-    .app-wrapper header .flex {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
-    }
 }
