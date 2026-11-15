@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Cloudinary\Cloudinary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -107,8 +107,11 @@ class ProductController extends Controller
         $imageUrl = $request->image;
 
         if ($request->hasFile('image_file')) {
-            $uploadedFileUrl = Cloudinary::upload($request->file('image_file')->getRealPath())->getSecurePath();
-            $imageUrl = $uploadedFileUrl;
+            $cloudinary = new Cloudinary(env('CLOUDINARY_URL'));
+            $resultado = $cloudinary->uploadApi()->upload($request->file('image_file')->getRealPath(), [
+                'upload_preset' => 'lojaanimais_preset',
+            ]);
+            $imageUrl = $resultado['secure_url'];
         }
 
         $produto = new Product();
@@ -172,8 +175,11 @@ class ProductController extends Controller
         $produto->category_id = $request->category_id;
 
         if ($request->hasFile('image_file')) {
-            $uploadedFileUrl = Cloudinary::upload($request->file('image_file')->getRealPath())->getSecurePath();
-            $produto->image = $uploadedFileUrl;
+            $cloudinary = new Cloudinary(env('CLOUDINARY_URL'));
+            $resultado = $cloudinary->uploadApi()->upload($request->file('image_file')->getRealPath(), [
+                'upload_preset' => 'lojaanimais_preset',
+            ]);
+            $produto->image = $resultado['secure_url'];
         } elseif ($request->filled('image')) {
             $produto->image = $request->image;
         }
