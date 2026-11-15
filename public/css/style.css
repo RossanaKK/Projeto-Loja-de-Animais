@@ -3,12 +3,12 @@
     --cor-primaria-hover: #115e59;
     --cor-secundaria: #f59e0b;
     --cor-fundo: #faf8f5;
-    --cor-cartao: #ffffff;
+    --cor-cartao: rgba(255, 255, 255, 0.88);
     --cor-texto: #1f2937;
     --cor-texto-suave: #4b5563;
     --cor-borda: #e5e7eb;
     --cor-perigo: #dc2626;
-    --sombra-suave: 0 4px 12px rgba(15, 118, 110, 0.08);
+    --sombra-suave: 0 6px 16px rgba(15, 118, 110, 0.10);
     --raio-borda: 12px;
 }
 
@@ -22,7 +22,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: linear-gradient(rgba(250, 248, 245, 0.30), rgba(250, 248, 245, 0.35)),
+    background: linear-gradient(rgba(250, 248, 245, 0.35), rgba(250, 248, 245, 0.42)),
                 url('/img/loja.jpg') center/cover fixed no-repeat !important;
     color: var(--cor-texto);
     font-family: 'Figtree', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -40,12 +40,13 @@ body {
 }
 
 .navbar-loja {
-    background-color: rgba(255, 255, 255, 0.94);
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(6px);
     border-bottom: 2px solid var(--cor-borda);
     position: sticky;
     top: 0;
     z-index: 50;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
 }
 
 .navbar-container {
@@ -89,11 +90,12 @@ body {
 }
 
 .page-header {
-    background-color: var(--cor-cartao);
+    background-color: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(4px);
     border-bottom: 1px solid var(--cor-borda);
 }
 
-/* Bloco inicial centrado na zona da bandana do cão, perfeitamente afastado do gato */
+/* Bloco inicial (Welcome) centrado na zona da bandana do cão */
 .hero-inicio,
 .hero-banner {
     background: transparent !important;
@@ -133,17 +135,21 @@ body {
     box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
 }
 
-/* Contentor das restantes páginas (Catálogo, Categorias, Encomendas, etc.) */
+/* Contentor das restantes páginas com transparência elegante */
 .container-loja {
     max-width: 1200px;
     margin: 1.5rem auto;
     padding: 1.5rem;
-    background-color: transparent !important;
+    background-color: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(6px);
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-suave);
+    border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
 .container-loja > h1 {
     display: inline-block;
-    background-color: rgba(255, 255, 255, 0.94);
+    background-color: rgba(255, 255, 255, 0.92);
     padding: 0.5rem 1.25rem;
     border-radius: 10px;
     color: #111827 !important;
@@ -170,7 +176,7 @@ body {
     font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
-    background-color: var(--cor-cartao);
+    background-color: rgba(255, 255, 255, 0.92);
     color: var(--cor-texto);
     border: 1px solid var(--cor-borda);
     transition: all 0.2s ease;
@@ -194,7 +200,8 @@ body {
 }
 
 .cartao-produto {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(4px);
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-borda);
     overflow: hidden;
@@ -259,7 +266,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fcfcfc;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 .produto-preco {
@@ -308,6 +315,8 @@ body {
 }
 
 .app-wrapper .bg-white.overflow-hidden {
+    background-color: rgba(255, 255, 255, 0.88) !important;
+    backdrop-filter: blur(4px);
     overflow-x: auto !important;
     border-radius: var(--raio-borda);
     border: 1px solid var(--cor-borda);
@@ -321,7 +330,7 @@ body {
 }
 
 .app-wrapper thead th {
-    background-color: #f0fdfa;
+    background-color: rgba(240, 253, 250, 0.9);
     color: var(--cor-primaria);
     font-weight: 700;
     font-size: 0.85rem;
@@ -331,7 +340,7 @@ body {
 }
 
 .app-wrapper tbody tr:hover {
-    background-color: #f9fafb;
+    background-color: rgba(249, 250, 251, 0.8);
 }
 
 .app-wrapper input[type="text"],
@@ -340,6 +349,7 @@ body {
 .app-wrapper input[type="password"],
 .app-wrapper select,
 .app-wrapper textarea {
+    background-color: rgba(255, 255, 255, 0.9);
     border-color: var(--cor-borda);
     border-radius: 8px;
 }
@@ -355,7 +365,8 @@ body {
 .footer-loja {
     flex-shrink: 0;
     margin-top: auto;
-    background-color: rgba(255, 255, 255, 0.94);
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(6px);
     border-top: 1px solid var(--cor-borda);
     padding: 1.25rem 1.5rem;
     text-align: center;
@@ -373,7 +384,8 @@ body {
 }
 
 .guest-card {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.90);
+    backdrop-filter: blur(4px);
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-borda) !important;
     box-shadow: var(--sombra-suave) !important;
@@ -407,10 +419,12 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.94);
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
     padding: 1rem 1.25rem;
     border-radius: var(--raio-borda);
     box-shadow: var(--sombra-suave);
+    border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
 .cabecalho-seccao h1 {
@@ -419,7 +433,8 @@ body {
 }
 
 .form-box {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.90);
+    backdrop-filter: blur(4px);
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-borda);
     padding: 2rem;
@@ -523,7 +538,8 @@ body {
 }
 
 .tabela-contentor {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.90);
+    backdrop-filter: blur(4px);
     border: 1px solid var(--cor-borda);
     border-radius: var(--raio-borda);
     box-shadow: var(--sombra-suave);
@@ -534,14 +550,11 @@ body {
     width: 100%;
     border-collapse: collapse;
     min-width: 600px;
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: var(--raio-borda);
-    overflow: hidden;
-    box-shadow: var(--sombra-suave);
+    background-color: transparent;
 }
 
 .tabela-loja thead th {
-    background-color: #f0fdfa;
+    background-color: rgba(240, 253, 250, 0.9);
     color: var(--cor-primaria);
     text-align: left;
     padding: 0.9rem 1rem;
@@ -556,7 +569,7 @@ body {
 }
 
 .tabela-loja tbody tr:hover {
-    background-color: #f9fafb;
+    background-color: rgba(249, 250, 251, 0.8);
 }
 
 .link-editar {
