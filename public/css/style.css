@@ -3,12 +3,12 @@
     --cor-primaria-hover: #115e59;
     --cor-secundaria: #f59e0b;
     --cor-fundo: #faf8f5;
-    --cor-cartao: rgba(255, 255, 255, 0.88);
+    --cor-cartao: rgba(255, 255, 255, 0.65);
     --cor-texto: #1f2937;
     --cor-texto-suave: #4b5563;
-    --cor-borda: #e5e7eb;
+    --cor-borda: rgba(229, 231, 235, 0.8);
     --cor-perigo: #dc2626;
-    --sombra-suave: 0 6px 16px rgba(15, 118, 110, 0.10);
+    --sombra-suave: 0 6px 20px rgba(0, 0, 0, 0.08);
     --raio-borda: 12px;
 }
 
@@ -18,11 +18,10 @@
 
 body {
     margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
+    padding-top: 75px;   /* Espaço para o header fixo não tapar o topo */
+    padding-bottom: 60px; /* Espaço para o footer fixo não tapar o fundo */
     min-height: 100vh;
-    background: linear-gradient(rgba(250, 248, 245, 0.35), rgba(250, 248, 245, 0.42)),
+    background: linear-gradient(rgba(250, 248, 245, 0.22), rgba(250, 248, 245, 0.30)),
                 url('/img/loja.jpg') center/cover fixed no-repeat !important;
     color: var(--cor-texto);
     font-family: 'Figtree', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -30,7 +29,7 @@ body {
 }
 
 .app-wrapper {
-    flex: 1 0 auto;
+    min-height: calc(100vh - 135px);
     background-color: transparent !important;
 }
 
@@ -39,14 +38,17 @@ body {
     background-color: transparent !important;
 }
 
+/* HEADER FIXO NO TOPO */
 .navbar-loja {
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(6px);
-    border-bottom: 2px solid var(--cor-borda);
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 50;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid rgba(229, 231, 235, 0.6);
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
 .navbar-container {
@@ -90,8 +92,8 @@ body {
 }
 
 .page-header {
-    background-color: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(4px);
+    background-color: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(6px);
     border-bottom: 1px solid var(--cor-borda);
 }
 
@@ -103,7 +105,7 @@ body {
     box-shadow: none !important;
     border: none !important;
     max-width: 780px;
-    margin: 42vh auto 1.5rem auto;
+    margin: 32vh auto 1.5rem auto;
     padding: 0.5rem 1.5rem;
     text-align: center;
 }
@@ -135,21 +137,22 @@ body {
     box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
 }
 
-/* Contentor das restantes páginas com transparência elegante */
+/* Contentor principal das restantes páginas com alta transparência */
 .container-loja {
     max-width: 1200px;
     margin: 1.5rem auto;
     padding: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.78);
-    backdrop-filter: blur(6px);
+    background-color: rgba(255, 255, 255, 0.50);
+    backdrop-filter: blur(8px);
     border-radius: var(--raio-borda);
     box-shadow: var(--sombra-suave);
-    border: 1px solid rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .container-loja > h1 {
     display: inline-block;
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(4px);
     padding: 0.5rem 1.25rem;
     border-radius: 10px;
     color: #111827 !important;
@@ -176,7 +179,8 @@ body {
     font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(4px);
     color: var(--cor-texto);
     border: 1px solid var(--cor-borda);
     transition: all 0.2s ease;
@@ -200,9 +204,9 @@ body {
 }
 
 .cartao-produto {
-    background-color: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(4px);
-    border: 1px solid var(--cor-borda);
+    background-color: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: var(--raio-borda);
     overflow: hidden;
     display: flex;
@@ -219,7 +223,7 @@ body {
 
 .produto-imagem {
     height: 190px;
-    background-color: #f3f4f6;
+    background-color: rgba(243, 244, 246, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -238,7 +242,7 @@ body {
 
 .badge-categoria {
     display: inline-block;
-    background-color: #ccfbf1;
+    background-color: rgba(204, 251, 241, 0.85);
     color: var(--cor-primaria);
     font-size: 0.75rem;
     font-weight: 700;
@@ -266,7 +270,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.40);
 }
 
 .produto-preco {
@@ -315,8 +319,8 @@ body {
 }
 
 .app-wrapper .bg-white.overflow-hidden {
-    background-color: rgba(255, 255, 255, 0.88) !important;
-    backdrop-filter: blur(4px);
+    background-color: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(6px);
     overflow-x: auto !important;
     border-radius: var(--raio-borda);
     border: 1px solid var(--cor-borda);
@@ -330,9 +334,10 @@ body {
 }
 
 .app-wrapper thead th {
-    background-color: rgba(240, 253, 250, 0.9);
+    background-color: rgba(240, 253, 250, 0.75);
     color: var(--cor-primaria);
-    font-weight: 700;
+    text-align: left;
+    padding: 0.9rem 1rem;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.03em;
@@ -340,7 +345,7 @@ body {
 }
 
 .app-wrapper tbody tr:hover {
-    background-color: rgba(249, 250, 251, 0.8);
+    background-color: rgba(249, 250, 251, 0.6);
 }
 
 .app-wrapper input[type="text"],
@@ -349,7 +354,7 @@ body {
 .app-wrapper input[type="password"],
 .app-wrapper select,
 .app-wrapper textarea {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.75);
     border-color: var(--cor-borda);
     border-radius: 8px;
 }
@@ -362,20 +367,24 @@ body {
     outline: none;
 }
 
+/* FOOTER FIXO EM BAIXO NO ECRÃ */
 .footer-loja {
-    flex-shrink: 0;
-    margin-top: auto;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(6px);
-    border-top: 1px solid var(--cor-borda);
-    padding: 1.25rem 1.5rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(229, 231, 235, 0.6);
+    padding: 0.75rem 1.5rem;
     text-align: center;
     font-size: 0.9rem;
     color: var(--cor-texto);
+    z-index: 1000;
 }
 
 .footer-loja p {
-    margin: 0.25rem 0;
+    margin: 0.15rem 0;
 }
 
 .guest-wrapper {
@@ -384,9 +393,9 @@ body {
 }
 
 .guest-card {
-    background-color: rgba(255, 255, 255, 0.90);
-    backdrop-filter: blur(4px);
-    border: 1px solid var(--cor-borda);
+    background-color: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: var(--raio-borda) !important;
     box-shadow: var(--sombra-suave) !important;
 }
@@ -419,12 +428,12 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(4px);
+    background-color: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(6px);
     padding: 1rem 1.25rem;
     border-radius: var(--raio-borda);
     box-shadow: var(--sombra-suave);
-    border: 1px solid rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .cabecalho-seccao h1 {
@@ -433,9 +442,9 @@ body {
 }
 
 .form-box {
-    background-color: rgba(255, 255, 255, 0.90);
-    backdrop-filter: blur(4px);
-    border: 1px solid var(--cor-borda);
+    background-color: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: var(--raio-borda);
     padding: 2rem;
     box-shadow: var(--sombra-suave);
@@ -505,18 +514,18 @@ body {
 }
 
 .button-voltar {
-    background-color: #e5e7eb;
+    background-color: rgba(229, 231, 235, 0.8);
     color: var(--cor-texto);
 }
 
 .button-voltar:hover {
-    background-color: #d1d5db;
+    background-color: rgba(209, 213, 219, 0.9);
 }
 
 .erros-box {
     margin-top: 1.25rem;
     padding: 1rem;
-    background-color: #fee2e2;
+    background-color: rgba(254, 226, 226, 0.85);
     border: 1px solid #fca5a5;
     border-radius: 8px;
     color: var(--cor-perigo);
@@ -528,7 +537,7 @@ body {
 }
 
 .alerta-sucesso {
-    background-color: #d1fae5;
+    background-color: rgba(209, 250, 229, 0.85);
     color: #065f46;
     border: 1px solid #6ee7b7;
     padding: 0.9rem 1.2rem;
@@ -538,9 +547,9 @@ body {
 }
 
 .tabela-contentor {
-    background-color: rgba(255, 255, 255, 0.90);
-    backdrop-filter: blur(4px);
-    border: 1px solid var(--cor-borda);
+    background-color: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: var(--raio-borda);
     box-shadow: var(--sombra-suave);
     overflow-x: auto;
@@ -554,7 +563,7 @@ body {
 }
 
 .tabela-loja thead th {
-    background-color: rgba(240, 253, 250, 0.9);
+    background-color: rgba(240, 253, 250, 0.75);
     color: var(--cor-primaria);
     text-align: left;
     padding: 0.9rem 1rem;
@@ -569,7 +578,7 @@ body {
 }
 
 .tabela-loja tbody tr:hover {
-    background-color: rgba(249, 250, 251, 0.8);
+    background-color: rgba(249, 250, 251, 0.6);
 }
 
 .link-editar {

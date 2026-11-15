@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja de Animais</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v=11">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v=15">
 </head>
-<body style="display: flex; flex-direction: column; min-height: 100vh; background: linear-gradient(rgba(250, 248, 245, 0.30), rgba(250, 248, 245, 0.35)), url('{{ asset('img/loja.jpg') }}') center/cover fixed no-repeat;">
+<body style="background: linear-gradient(rgba(250, 248, 245, 0.22), rgba(250, 248, 245, 0.30)), url('{{ asset('img/loja.jpg') }}') center/cover fixed no-repeat;">
     <header class="navbar-loja">
         <div class="navbar-container">
             <a href="{{ url('/') }}" class="brand-logo">🐾 Loja de Animais</a>
@@ -41,7 +41,7 @@
         </div>
     </header>
 
-    <div class="app-wrapper" style="flex: 1 0 auto;">
+    <div class="app-wrapper">
         @yield('content')
     </div>
 
