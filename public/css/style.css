@@ -93,7 +93,7 @@ body {
     border-bottom: 1px solid var(--cor-borda);
 }
 
-/* Bloco inicial centrado, grande, transparente e legível */
+/* Bloco inicial centrado e posicionado na zona do pescoço/bandana do cão */
 .hero-inicio,
 .hero-banner {
     background: transparent !important;
@@ -101,7 +101,7 @@ body {
     box-shadow: none !important;
     border: none !important;
     max-width: 850px;
-    margin: 1.25rem auto 0 auto;
+    margin: 48vh auto 1.5rem auto;
     padding: 1rem 2rem;
     text-align: center;
 }
@@ -598,7 +598,7 @@ body {
 
     .hero-inicio,
     .hero-banner {
-        margin: 1.5rem 1rem;
+        margin: 15vh 1rem 1.5rem 1rem;
         padding: 1.5rem 1rem;
         max-width: none;
     }
