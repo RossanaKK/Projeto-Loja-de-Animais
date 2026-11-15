@@ -18,8 +18,8 @@
 
 body {
     margin: 0;
-    padding-top: 75px;   /* Espaço para o header fixo não tapar o topo */
-    padding-bottom: 60px; /* Espaço para o footer fixo não tapar o fundo */
+    padding-top: 75px;
+    padding-bottom: 60px;
     min-height: 100vh;
     background: linear-gradient(rgba(250, 248, 245, 0.22), rgba(250, 248, 245, 0.30)),
                 url('/img/loja.jpg') center/cover fixed no-repeat !important;
@@ -54,7 +54,7 @@ body {
 .navbar-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.9rem 1.5rem;
+    padding: 0.75rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -62,14 +62,21 @@ body {
     gap: 1rem;
 }
 
+/* RETÂNGULO TRANSPARENTE POR TRÁS DO LOGOTIPO */
 .brand-logo {
     font-size: 1.35rem;
     font-weight: 800;
     color: var(--cor-primaria);
     text-decoration: none;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(6px);
+    padding: 0.35rem 0.85rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
 .nav-links {
@@ -340,31 +347,41 @@ body {
     padding: 0.9rem 1rem;
     font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
-    padding: 0.85rem 1rem;
+    border-bottom: 2px solid var(--cor-borda);
+}
+
+.app-wrapper tbody td {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--cor-borda);
 }
 
 .app-wrapper tbody tr:hover {
     background-color: rgba(249, 250, 251, 0.6);
 }
 
-.app-wrapper input[type="text"],
-.app-wrapper input[type="number"],
-.app-wrapper input[type="email"],
-.app-wrapper input[type="password"],
-.app-wrapper select,
-.app-wrapper textarea {
-    background-color: rgba(255, 255, 255, 0.75);
-    border-color: var(--cor-borda);
-    border-radius: 8px;
+.link-editar {
+    color: var(--cor-primaria);
+    font-weight: 600;
+    text-decoration: none;
+    margin-right: 0.75rem;
 }
 
-.app-wrapper input:focus,
-.app-wrapper select:focus,
-.app-wrapper textarea:focus {
-    border-color: var(--cor-primaria);
-    box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
-    outline: none;
+.link-editar:hover {
+    text-decoration: underline;
+}
+
+.link-eliminar {
+    background: none;
+    border: none;
+    color: var(--cor-perigo);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+.link-eliminar:hover {
+    text-decoration: underline;
 }
 
 /* FOOTER FIXO EM BAIXO NO ECRÃ */
