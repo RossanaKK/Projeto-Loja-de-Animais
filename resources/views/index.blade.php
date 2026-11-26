@@ -6,7 +6,7 @@
 
     <header class="hero-banner">
         <h1>Tudo o que o teu melhor amigo precisa</h1>
-        <p>Explora a nossa seleção de alimentação, brinquedos, acessórios e higiene para cães e gatos.</p>
+        <p>Explora a nossa seleção de alimentação, brinquedos, acessórios, higiene e outros produtos para cães e gatos.</p>
     </header>
 
     <main class="container-loja">

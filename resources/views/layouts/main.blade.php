@@ -46,8 +46,8 @@
     </div>
 
     <footer class="footer-loja">
-        <p>🐾 <strong>Loja de Animais</strong> — Rua da Universidade, Funchal | Email: contacto@lojaanimais.pt | Tel: 291 000 000</p>
-        <p>© 2026 Projeto de Aplicações Centradas em Redes</p>
+        <p>🐾 <strong>Loja de Animais</strong> — Rua da Universidade, Funchal | Email: contacto@loja.pt | Tel: 291 123 456</p>
+        <p>© 2026 Projeto de Aplicações Centradas em Redes - Realizado por Rossana Kiekeben</p>
     </footer>
 
     <script src="{{ asset('js/script.js') }}"></script>
