@@ -161,7 +161,7 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        if (!Auth::check() || !Auth::user()->is_admin) {
+        if (! Auth::user()->is_admin) {
             return redirect()->route('products.index')->with('error', 'Acesso reservado a administradores.');
         }
 
