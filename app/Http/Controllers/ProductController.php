@@ -10,24 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    private function getCloudinaryInstance(): Cloudinary
-    {
-        if (env('CLOUDINARY_URL')) {
-            return new Cloudinary(env('CLOUDINARY_URL'));
-        }
-
-        return new Cloudinary([
-            'cloud' => [
-                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
-                'api_key'    => env('CLOUDINARY_API_KEY'),
-                'api_secret' => env('CLOUDINARY_API_SECRET'),
-            ],
-            'url' => [
-                'secure' => true,
-            ],
-        ]);
-    }
-
     public function index(Request $request)
     {
         return $this->indexByCategory(0, $request);
@@ -40,11 +22,12 @@ class ProductController extends Controller
         $destaque = Product::inRandomOrder()->first();
         $ordem = $request->query('ordem');
         $pesquisa = $request->query('pesquisa');
+        $categoriaId = $request->query('category', $id);
 
         $query = Product::with('category');
 
-        if ($id != 0) {
-            $query->where('category_id', $id);
+        if ($categoriaId != 0) {
+            $query->where('category_id', $categoriaId);
         }
 
         if (!empty($pesquisa)) {
@@ -65,7 +48,7 @@ class ProductController extends Controller
         return view('products.index', [
             'products' => $produtos,
             'categorias' => $categorias,
-            'idCategoriaAtiva' => $id,
+            'idCategoriaAtiva' => $categoriaId,
             'destaque' => $destaque,
             'ordem' => $ordem,
             'pesquisa' => $pesquisa,
@@ -125,7 +108,7 @@ class ProductController extends Controller
         $imageUrl = $request->image;
 
         if ($request->hasFile('image_file')) {
-            $cloudinary = $this->getCloudinaryInstance();
+            $cloudinary = new Cloudinary(env('CLOUDINARY_URL'));
             $resultado = $cloudinary->uploadApi()->upload($request->file('image_file')->getRealPath(), [
                 'upload_preset' => 'lojaanimais_preset',
             ]);
@@ -146,7 +129,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        if (! Auth::user()->isAdmin) {
+        if (! Auth::user()->is_admin) {
             return redirect()->route('products.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -161,7 +144,7 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        if (! Auth::user()->isAdmin) {
+        if (! Auth::user()->is_admin) {
             return redirect()->route('products.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -193,7 +176,7 @@ class ProductController extends Controller
         $produto->category_id = $request->category_id;
 
         if ($request->hasFile('image_file')) {
-            $cloudinary = $this->getCloudinaryInstance();
+            $cloudinary = new Cloudinary(env('CLOUDINARY_URL'));
             $resultado = $cloudinary->uploadApi()->upload($request->file('image_file')->getRealPath(), [
                 'upload_preset' => 'lojaanimais_preset',
             ]);

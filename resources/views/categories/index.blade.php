@@ -28,7 +28,11 @@
                     @foreach($categories as $category)
                         <tr>
                             <td><strong>{{ $category->name }}</strong></td>
-                            <td>{{ $category->products->count() }}</td>
+                            <td>
+                                <a href="{{ route('products.index', ['category' => $category->id]) }}" class="link-editar">
+                                    {{ $category->products->count() }}
+                                </a>
+                            </td>
                             @if(Auth::user()->is_admin)
                                 <td style="text-align: right;">
                                     <a href="{{ route('categories.edit', $category->id) }}" class="link-editar">Editar</a>
