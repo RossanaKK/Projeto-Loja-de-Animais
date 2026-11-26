@@ -22,6 +22,9 @@
                     <a href="{{ route('categories.create') }}" class="button">
                         Criar Categoria
                     </a>
+                    <a href="{{ route('orders.index') }}" class="button">
+                        Encomendas dos Clientes
+                    </a>
                 @else
                     <a href="{{ route('orders.index') }}" class="button">
                         As Minhas Encomendas

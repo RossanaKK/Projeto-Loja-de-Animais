@@ -7,7 +7,7 @@
         <div class="cartao-produto" style="padding: 2rem;">
             <h1 style="margin-top: 0; color: var(--cor-primaria);">Contacta-nos</h1>
             <p style="color: var(--cor-texto-suave);">
-                Tens alguma dúvida sobre os nossos produtos ou encomendas? Envia-nos uma mensagem ou contacta-nos diretamente através do email <strong>contacto@lojaanimais.pt</strong>.
+                Tens alguma dúvida sobre os nossos produtos ou encomendas? Envia-nos uma mensagem ou contacta-nos diretamente através do email <strong>contacto@loja.pt</strong>.
             </p>
 
             @if(session('success'))
