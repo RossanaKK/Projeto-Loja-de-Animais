@@ -12,7 +12,14 @@ class StoreCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        if( Auth::user() == null)
+        {
+            return false;
+        }
+        if (! Auth::user()->isAdmin()) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -23,7 +30,7 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name.required' => 'O nome da Categoria é obrigatório.',
         ];
     }
 }

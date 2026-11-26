@@ -87,7 +87,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        if (!Auth::check() || !Auth::user()->is_admin) {
+        if (! Auth::user()->is_admin) {
             return redirect()->route('products.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -97,7 +97,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        if (!Auth::check() || !Auth::user()->is_admin) {
+        if (! Auth::user()->is_admin) {
             return redirect()->route('products.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -146,7 +146,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        if (!Auth::check() || !Auth::user()->is_admin) {
+        if (! Auth::user()->isAdmin) {
             return redirect()->route('products.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -161,7 +161,7 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        if (! Auth::user()->is_admin) {
+        if (! Auth::user()->isAdmin) {
             return redirect()->route('products.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -209,7 +209,7 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        if (!Auth::check() || !Auth::user()->is_admin) {
+        if (! Auth::user()->isAdmin) {
             return redirect()->route('products.index')->with('error', 'Acesso reservado a administradores.');
         }
 

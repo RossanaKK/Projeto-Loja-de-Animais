@@ -22,7 +22,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        if (!Auth::check() || !Auth::user()->is_admin) {
+        if (! Auth::user()->is_admin) {
             return redirect()->route('categories.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -31,7 +31,7 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        if (!Auth::check() || !Auth::user()->is_admin) {
+        if (! Auth::user()->is_admin) {
             return redirect()->route('categories.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -52,7 +52,7 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        if (!Auth::check() || !Auth::user()->is_admin) {
+        if (! Auth::user()->is_admin) {
             return redirect()->route('categories.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -83,11 +83,11 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        if (!Auth::check() || !Auth::user()->is_admin) {
+        if (! Auth::user()->isAdmin) {
             return redirect()->route('categories.index')->with('error', 'Acesso reservado a administradores.');
         }
 
-        $categoria = Category::findOrFail($id);
+        $categoria = Category::find($id);
         $categoria->delete();
 
         return redirect()->route('categories.index')->with('success', 'Categoria eliminada com sucesso!');
