@@ -12,7 +12,7 @@
                     Ver Produtos
                 </a>
 
-                @if(Auth::user()->is_admin)
+                @if(Auth::user()->isAdmin)
                     <a href="{{ route('products.create') }}" class="button">
                         Criar Produto
                     </a>
