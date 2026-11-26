@@ -209,7 +209,7 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        if (! Auth::user()->isAdmin) {
+        if (! Auth::user()->is_admin) {
             return redirect()->route('products.index')->with('error', 'Acesso reservado a administradores.');
         }
 

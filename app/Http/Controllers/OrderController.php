@@ -11,7 +11,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        if (Auth::user()->isAdmin) {
+        if (Auth::user()->is_admin) {
             $orders = Order::with(['product', 'user'])->orderBy('created_at', 'desc')->get();
         } else {
             $orders = Order::with('product')
@@ -25,7 +25,7 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        if (Auth::user()->isAdmin) {
+        if (Auth::user()->is_admin) {
             return redirect()->back()->with('error', 'Os administradores não podem efetuar compras.');
         }
 
@@ -56,7 +56,7 @@ class OrderController extends Controller
     {
         $order = Order::with(['product', 'user'])->findOrFail($id);
 
-        if (! Auth::user()->isAdmin && $order->user_id !== Auth::id()) {
+        if (! Auth::user()->is_admin && $order->user_id !== Auth::id()) {
             return redirect()->route('orders.index')->with('error', 'Não tens permissão para ver esta encomenda.');
         }
 
@@ -67,7 +67,7 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($id);
 
-        if (! Auth::user()->isAdmin && $order->user_id !== Auth::id()) {
+        if (! Auth::user()->is_admin && $order->user_id !== Auth::id()) {
             return redirect()->route('orders.index')->with('error', 'Não tens permissão para cancelar esta encomenda.');
         }
 

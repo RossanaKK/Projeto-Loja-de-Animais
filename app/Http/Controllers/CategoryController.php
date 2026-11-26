@@ -22,7 +22,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        if (! Auth::user()->isAdmin) {
+        if (! Auth::user()->is_admin) {
             return redirect()->route('categories.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -31,7 +31,7 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        if (! Auth::user()->isAdmin) {
+        if (! Auth::user()->is_admin) {
             return redirect()->route('categories.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -52,7 +52,7 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        if (! Auth::user()->isAdmin) {
+        if (! Auth::user()->is_admin) {
             return redirect()->route('categories.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -62,7 +62,7 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
-        if (! Auth::user()->isAdmin) {
+        if (! Auth::user()->is_admin) {
             return redirect()->route('categories.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -83,7 +83,7 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        if (! Auth::user()->isAdmin) {
+        if (! Auth::user()->is_admin) {
             return redirect()->route('categories.index')->with('error', 'Acesso reservado a administradores.');
         }
 
