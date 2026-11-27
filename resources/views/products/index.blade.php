@@ -36,14 +36,15 @@
             @endforeach
         </div>
 
-        <div>
-            <strong>Ordenar por Preço:</strong>
-            <a href="{{ route('products.index', ['ordem' => 'asc', 'pesquisa' => $pesquisa ?? null]) }}" class="button" style="padding: 5px 10px; font-size: 0.9rem;">
-                Preço ↑ (Menor)
-            </a>
-            <a href="{{ route('products.index', ['ordem' => 'desc', 'pesquisa' => $pesquisa ?? null]) }}" class="button" style="padding: 5px 10px; font-size: 0.9rem;">
-                Preço ↓ (Maior)
-            </a>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
+            <strong>Ordenar:</strong>
+            <select id="sortSelect" style="padding: 5px 10px; font-size: 0.9rem; border: 1px solid #ccc; border-radius: 6px; background: white;">
+                <option value="default">Padrão</option>
+                <option value="price_asc">Preço ↑ (Menor)</option>
+                <option value="price_desc">Preço ↓ (Maior)</option>
+                <option value="name_asc">Nome (A–Z)</option>
+                <option value="name_desc">Nome (Z–A)</option>
+            </select>
         </div>
     </div>
 
@@ -66,7 +67,7 @@
     @if($products->isEmpty())
         <p style="padding: 20px; background: #f8fafc; border-radius: 8px; text-align: center;">Nenhum produto encontrado para a pesquisa efetuada.</p>
     @else
-        <table class="tabela-loja" style="width: 100%; border-collapse: collapse;">
+        <table class="tabela-loja" data-per-page="6" style="width: 100%; border-collapse: collapse;">
             <thead>
                 <tr style="background: #112222; color: white; text-align: left;">
                     <th style="padding: 10px;">IMAGEM</th>
@@ -76,9 +77,9 @@
                     <th style="padding: 10px; text-align: right;">AÇÕES</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="productsTbody">
                 @foreach($products as $product)
-                <tr style="border-bottom: 1px solid #ddd;">
+                <tr data-product-card data-price="{{ $product->price }}" data-name="{{ $product->name }}" style="border-bottom: 1px solid #ddd;">
                     <td style="padding: 10px;">
                         @if($product->image)
                             <img src="{{ Str::startsWith($product->image, 'http') ? $product->image : asset($product->image) }}" alt="{{ $product->name }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;">
@@ -112,6 +113,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div id="paginationControls" style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 20px; flex-wrap: wrap;"></div>
     @endif
 </div>
+
+<script src="{{ asset('js/catalog-controls.js') }}"></script>
 @endsection
