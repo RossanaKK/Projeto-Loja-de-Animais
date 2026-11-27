@@ -19,7 +19,6 @@ class ProductController extends Controller
     {
         $request = $request ?? request();
         $categorias = Category::all();
-        $destaque = Product::inRandomOrder()->first();
         $ordem = $request->query('ordem');
         $pesquisa = $request->query('pesquisa');
         $categoriaId = $request->query('category', $id);
@@ -49,7 +48,6 @@ class ProductController extends Controller
             'products' => $produtos,
             'categorias' => $categorias,
             'idCategoriaAtiva' => $categoriaId,
-            'destaque' => $destaque,
             'ordem' => $ordem,
             'pesquisa' => $pesquisa,
         ]);
@@ -59,18 +57,16 @@ class ProductController extends Controller
     {
         $produto = Product::findOrFail($id);
         $categoria = Category::find($produto->category_id);
-        $destaque = Product::inRandomOrder()->first();
 
         return view('products.show', [
             'produto' => $produto,
             'categoria' => $categoria,
-            'destaque' => $destaque,
         ]);
     }
 
     public function create()
     {
-        if (! Auth::user()->is_admin) {
+        if (!Auth::user()?->is_admin) {
             return redirect()->route('products.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -80,29 +76,17 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        if (! Auth::user()->is_admin) {
+        if (!Auth::user()?->is_admin) {
             return redirect()->route('products.index')->with('error', 'Acesso reservado a administradores.');
         }
 
         $request->validate([
-            'name' => 'required|string|min:3|max:255',
-            'description' => 'nullable|string|min:5',
-            'price' => 'required|numeric|min:0.01',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
             'category_id' => 'required|exists:categories,id',
-            'image_file' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'image' => 'nullable|string|max:500',
-        ], [
-            'name.required' => 'O nome do produto é obrigatório.',
-            'name.min' => 'O nome do produto deve ter pelo menos 3 caracteres.',
-            'description.min' => 'A descrição deve ter pelo menos 5 caracteres.',
-            'price.required' => 'Indica o preço do produto.',
-            'price.numeric' => 'O preço tem de ser um valor numérico válido.',
-            'price.min' => 'O preço deve ser superior a 0 €.',
-            'category_id.required' => 'Seleciona uma categoria para o produto.',
-            'category_id.exists' => 'A categoria selecionada não é válida.',
-            'image_file.image' => 'O ficheiro enviado tem de ser uma imagem.',
-            'image_file.mimes' => 'A imagem deve estar no formato JPG, JPEG, PNG ou WEBP.',
-            'image_file.max' => 'A imagem não pode ultrapassar os 2MB.',
+            'image_file' => 'nullable|image',
+            'image' => 'nullable|string',
         ]);
 
         $imageUrl = $request->image;
@@ -129,7 +113,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        if (! Auth::user()->is_admin) {
+        if (!Auth::user()?->is_admin) {
             return redirect()->route('products.index')->with('error', 'Acesso reservado a administradores.');
         }
 
@@ -144,29 +128,17 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        if (! Auth::user()->is_admin) {
+        if (!Auth::user()?->is_admin) {
             return redirect()->route('products.index')->with('error', 'Acesso reservado a administradores.');
         }
 
         $request->validate([
-            'name' => 'required|string|min:3|max:255',
-            'description' => 'nullable|string|min:5',
-            'price' => 'required|numeric|min:0.01',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
             'category_id' => 'required|exists:categories,id',
-            'image_file' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'image' => 'nullable|string|max:500',
-        ], [
-            'name.required' => 'O nome do produto é obrigatório.',
-            'name.min' => 'O nome do produto deve ter pelo menos 3 caracteres.',
-            'description.min' => 'A descrição deve ter pelo menos 5 caracteres.',
-            'price.required' => 'Indica o preço do produto.',
-            'price.numeric' => 'O preço tem de ser um valor numérico válido.',
-            'price.min' => 'O preço deve ser superior a 0 €.',
-            'category_id.required' => 'Seleciona uma categoria para o produto.',
-            'category_id.exists' => 'A categoria selecionada não é válida.',
-            'image_file.image' => 'O ficheiro enviado tem de ser uma imagem.',
-            'image_file.mimes' => 'A imagem deve estar no formato JPG, JPEG, PNG ou WEBP.',
-            'image_file.max' => 'A imagem não pode ultrapassar os 2MB.',
+            'image_file' => 'nullable|image',
+            'image' => 'nullable|string',
         ]);
 
         $produto = Product::findOrFail($id);
@@ -192,7 +164,7 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        if (! Auth::user()->is_admin) {
+        if (!Auth::user()?->is_admin) {
             return redirect()->route('products.index')->with('error', 'Acesso reservado a administradores.');
         }
 

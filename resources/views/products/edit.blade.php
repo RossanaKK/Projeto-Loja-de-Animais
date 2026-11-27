@@ -69,8 +69,8 @@
         </div>
 
         <div>
-            <label for="image_file" style="display: block; font-weight: bold; margin-bottom: 5px;">Substituir por Nova Imagem (JPG, PNG, WEBP - Máx. 2MB)</label>
-            <input type="file" id="image_file" name="image_file" accept="image/jpeg,image/png,image/jpg,image/webp" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px;">
+            <label for="image_file" style="display: block; font-weight: bold; margin-bottom: 5px;">Substituir por Nova Imagem</label>
+            <input type="file" id="image_file" name="image_file" accept="image/*" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px;">
             @error('image_file')
                 <span style="color: #dc2626; font-size: 0.85rem;">{{ $message }}</span>
             @enderror
