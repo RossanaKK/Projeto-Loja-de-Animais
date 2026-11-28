@@ -8,7 +8,7 @@
     --cor-texto: #1f2937;
     --cor-texto-suave: #4b5563;
     --cor-borda: rgba(229, 231, 235, 0.65);
-    --cor-perigo: #dc2626;
+    --cor-perigo: #b91c1c;
     --sombra-suave: 0 6px 20px rgba(0, 0, 0, 0.08);
     --raio-borda: 12px;
 }
@@ -372,7 +372,27 @@ body {
 .acoes-links a {
     margin-right: 10px;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 0.9rem;
+    transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.acoes-links a:first-child {
+    color: var(--cor-primaria);
+}
+
+.acoes-links a:first-child:hover {
+    color: var(--cor-primaria-hover);
+    text-decoration: underline;
+}
+
+.acoes-links a:nth-child(2) {
+    color: #b45309;
+}
+
+.acoes-links a:nth-child(2):hover {
+    color: #92400e;
+    text-decoration: underline;
 }
 
 .form-eliminar {
@@ -383,9 +403,16 @@ body {
     background: none;
     border: none;
     color: var(--cor-perigo);
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 0.9rem;
     cursor: pointer;
     padding: 0;
+    transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.btn-eliminar:hover {
+    color: #991b1b;
+    text-decoration: underline;
 }
 
 .link-produto {
@@ -394,9 +421,20 @@ body {
     text-decoration: none;
 }
 
+.tabela-loja td a:not(.link-produto):not(.acoes-links a) {
+    color: var(--cor-texto-suave);
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.tabela-loja td a:not(.link-produto):not(.acoes-links a):hover {
+    color: var(--cor-primaria);
+    text-decoration: underline;
+}
+
 .preco-nowrap {
     white-space: nowrap;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 #paginationControls {
