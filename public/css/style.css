@@ -566,24 +566,28 @@ body {
         min-width: 0;
     }
 
-    .tabela-loja td:nth-child(3),
-    .tabela-loja td:nth-child(4) {
-        display: inline;
-        font-size: 0.84rem;
-    }
-
+    /* Categoria e preço dispostos lado a lado sem sobreposição */
     .tabela-loja td:nth-child(3) {
         grid-area: meta;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.84rem;
         color: var(--cor-texto-suave);
+        margin-right: 0.65rem;
     }
 
     .tabela-loja td:nth-child(3)::after {
-        content: " · ";
-        margin: 0 0.25rem;
+        content: "·";
+        color: var(--cor-texto-suave);
     }
 
     .tabela-loja td:nth-child(4) {
         grid-area: meta;
+        display: inline-flex;
+        align-items: center;
+        justify-self: end;
+        font-size: 0.88rem;
         font-weight: 500;
     }
 
